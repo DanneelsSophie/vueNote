@@ -1,17 +1,31 @@
 <template>
+  <v-app>
   <div id="app">
     <ol>
       <li v-for="todo in todos" v-bind:key="todo.id"  >
         {{ todo.text }}
-        <button v-on:click="del(todo.id) ">delete a note</button>
+        <v-btn  fab dark small v-on:click="del(todo.id)" color="error">
+          <v-icon dark>remove</v-icon>
+        </v-btn>
 
       </li>
     </ol>
-    <input v-model="message" placeholder="modifiez-moi">
-    <p>Your futur todo is : {{ message }}</p>
-    <button v-on:click="add ">Add a note</button>
+    <v-flex xs10 offset-xs1>
+      <v-text-field
+              v-model="message" placeholder="modifiez-moi"
+              label="Solo"
+              solo
+      ></v-text-field>
+    </v-flex >
+    <div  class="text-xs-center">
+      <p>Your futur todo is : {{ message }}</p>
+      <v-btn  v-on:click="add " fab dark small color="success">
+        <v-icon dark>add</v-icon>
+      </v-btn>
+    </div>
 
   </div>
+    </v-app>
 </template>
 
 <script>
